@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Solutions Burundi — Automatisation IA pour Entreprises Burundaises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060a14;
+  --bg-card: #0c1220;
+  --bg-card-hover: #111b2e;
+  --gold: #c9a227;
+  --gold-light: rgba(201,162,39,.13);
+  --gold-border: rgba(201,162,39,.25);
+  --green: #34d399;
+  --green-light: rgba(52,211,153,.1);
+  --green-border: rgba(52,211,153,.25);
+  --text: #eef0f4;
+  --text-muted: #7e8da3;
+  --border: rgba(255,255,255,.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  background: rgba(6,10,20,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-cta {
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 40px 100px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,162,39,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.8;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--bg);
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px rgba(201,162,39,.3);
+}
+
+/* SECTION */
+.section {
+  padding: 100px 60px;
+  position: relative;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 70px;
+}
+
+.section-label {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.section-head h2 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-head h2 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.section-head p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--gold-border);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0,0,0,.4);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.status {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 14px;
+}
+
+.status-live {
+  background: var(--green-light);
+  color: var(--green);
+  border: 1px solid var(--green-border);
+}
+
+.card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.roi {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-light);
+  border: 1px solid var(--green-border);
+  color: var(--green);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.3s;
+}
+
+.demo-btn:hover {
+  gap: 16px;
+}
+
+.play {
+  width: 36px;
+  height: 36px;
+  background: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* EXPERTISE */
+.expertise {
+  background: rgba(12,18,32,.6);
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.exp-card {
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.exp-card:hover {
+  background: var(--bg-card);
+  border-color: var(--gold-border);
+}
+
+.exp-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 26px;
+}
+
+.exp-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.exp-card p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* TEAM */
+.team-row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-card {
+  text-align: center;
+  width: 220px;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-card), #1a2540);
+  border: 2px solid var(--gold-border);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.team-card h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.role {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* CTA */
+.cta-section {
+  padding: 100px 60px;
+}
+
+.cta-box {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 24px;
+  padding: 70px 60px;
+}
+
+.cta-box h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.cta-box p {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.cta-email {
+  display: block;
+  margin-top: 25px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.cta-email a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.cta-email a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.footer-logo span {
+  color: var(--gold);
+}
+
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+footer small {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 920px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+  .exp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    padding: 18px 24px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .section {
+    padding: 80px 24px;
+  }
+  .hero {
+    padding: 120px 24px 80px;
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-box {
+    padding: 48px 28px;
+  }
+  .cta-section {
+    padding: 60px 24px;
+  }
+  footer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AI SOLUTIONS <span>BURUNDI</span></div>
+  <ul class="nav-links">
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#team">Équipe</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Demander un Audit</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge">
+      <span class="dot"></span>
+      AI & Automation · Marché Burundais
+    </div>
+    <h1>Transformez vos processus<br>avec <em>l'Intelligence Artificielle</em></h1>
+    <p class="hero-sub">De la banque digitale à l'archivage intelligent — nous automatisons vos workflows manuels en systèmes qui économisent du temps et de l'argent. Concrètement.</p>
+    <a href="#solutions" class="btn-gold">
+      Découvrir nos solutions →
+    </a>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="section" id="solutions">
+  <div class="section-head">
+    <span class="section-label">Nos Solutions</span>
+    <h2>Automatisation <em>intelligente</em><br>par département</h2>
+    <p>Chaque solution est conçue pour le marché burundais avec un ROI visible dès le jour un.</p>
+  </div>
+
+  <div class="cards">
+    <!-- Banking -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">🏦</div>
+        <span class="status status-live">● Live</span>
+      </div>
+      <div class="card-label">Banking Automation</div>
+      <h3>Amahoro AI — Banque Digitale</h3>
+      <p>Prêts et virements SWIFT via WhatsApp. Le client soumet sa demande, l'IA évalue la solvabilité — l'employé n'a qu'à approuver d'un clic.</p>
+      <div class="roi">
+        📈 80% des demandes traitées sans intervention humaine
+      </div>
+      <a href="https://youtu.be/h3QSg_TSvNI" class="demo-btn" target="_blank">
+        <span class="play">▶</span>
+        Regarder la démo
+      </a>
+    </div>
+
+    <!-- Customer Care -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">💬</div>
+        <span class="status status-live">● Live</span>
+      </div>
+      <div class="card-label">Customer Care</div>
+      <h3>Support Client 24/7</h3>
+      <p>Chatbot multilingue (Kirundi / Français / Anglais) avec mémoire intelligente. Répond en 3 secondes, capture les leads et notifie votre équipe en temps réel.</p>
+      <div class="roi">
+        📈 Réponse &lt;3 sec · +40% leads · 24/7/365
+      </div>
+      <a href="https://youtu.be/FnLtvH0KgTY" class="demo-btn" target="_blank">
+        <span class="play">▶</span>
+        Regarder la démo
+      </a>
+    </div>
+
+    <!-- Invoice OCR -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">📄</div>
+        <span class="status status-live">● Live</span>
+      </div>
+      <div class="card-label">Administration</div>
+      <h3>Automatisation Comptable</h3>
+      <p>OCR intelligent sur vos factures. Une photo suffit — l'IA extrait les données, calcule la TVA à 18% et les enregistre dans votre système en 10 secondes.</p>
+      <div class="roi">
+        📈 10 min → 30 sec · 99,8% précision
+      </div>
+      <a href="https://youtu.be/cT6NlarSmWs" class="demo-btn" target="_blank">
+        <span class="play">▶</span>
+        Regarder la démo
+      </a>
+    </div>
+
+    <!-- Legal Research -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">🔍</div>
+        <span class="status status-live">● Live</span>
+      </div>
+      <div class="card-label">Archives Intelligentes</div>
+      <h3>RAG pour Justice & Santé</h3>
+      <p>Recherche sémantique dans vos archives juridiques ou médicales. Trouvez n'importe quel document en secondes — pas en semaines.</p>
+      <div class="roi">
+        📈 2 semaines → 5 secondes de recherche
+      </div>
+      <a href="https://youtu.be/MjPNnwDSmAk" class="demo-btn" target="_blank">
+        <span class="play">▶</span>
+        Regarder la démo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="section expertise" id="expertise">
+  <div class="section-head">
+    <span class="section-label">Notre Expertise</span>
+    <h2>Technologie <em>de niveau mondial</em></h2>
+    <p>Construite avec les meilleures technologies, adaptée au contexte réglementaire burundais.</p>
+  </div>
+
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-icon">📚</div>
+      <h4>Architectures RAG</h4>
+      <p>LangChain · Pinecone Vector DB — recherche sémantique ultra-rapide dans vos documents.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🛡️</div>
+      <h4>Conformité BRB</h4>
+      <p>Normes de la Banque de la République du Burundi — KYC, réglementation crédit.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">💻</div>
+      <h4>Souveraineté Numérique</h4>
+      <p>Hébergement local — vos données restent sous votre contrôle, au Burundi.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">🔒</div>
+      <h4>Sécurité Enterprise</h4>
+      <p>OTP · AES-256 · Vérification identité — protection de niveau bancaire international.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="section-head">
+    <span class="section-label">Notre Équipe</span>
+    <h2>Les architectes de <em>votre transformation</em></h2>
+  </div>
+
+  <div class="team-row">
+    <div class="team-card">
+      <div class="avatar">H</div>
+      <h4>Henri Sack</h4>
+      <div class="role">AI Automation Architect</div>
+      <p>n8n · GPT-4 · Pinecone · Redis — construit des systèmes IA qui fonctionnent vraiment.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">A</div>
+      <h4>Alex Irakozé</h4>
+      <div class="role">Project Manager</div>
+      <p>Stratégie business · Relations clients · Développement commercial.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">N</div>
+      <h4>Nikhil Kassetty</h4>
+      <div class="role">Fintech Advisor</div>
+      <p>Expertise fintech · Recherche — conseiller stratégique basé aux États-Unis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <span class="section-label">Prêt à transformer ?</span>
+    <h2>Commencez votre<br>transformation IA aujourd'hui</h2>
+    <p>Demandez un audit gratuit de vos processus. En 48h, vous saurez exactement comment l'IA peut économiser du temps et de l'argent.</p>
+    <a href="/cdn-cgi/l/email-protection#dfb7bab1adb6bcb3beaabbbaacbebcb4ee9fb8b2beb6b3f1bcb0b2" class="btn-gold">
+      Demander un Audit Gratuit →
+    </a>
+    <p class="cta-email">Ou écrivez à <a href="/cdn-cgi/l/email-protection#b0d8d5dec2d9d3dcd1c5d4d5c3d1d3db81f0d7ddd1d9dc9ed3dfdd"><span class="__cf_email__" data-cfemail="264e4348544f454a475342435547454d1766414b474f4a0845494b">[email&#160;protected]</span></a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AI SOLUTIONS <span>BURUNDI</span></div>
+  <div class="footer-links">
+    <a href="#solutions">Solutions</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#team">Équipe</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <small>© 2026 AI Solutions Burundi</small>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Smooth sc
